@@ -1,8 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// routing
 import {BrowserRouter as Router} from 'react-router-dom';
 import router from './router';
+// styles
+import "./App.scss"
 
 const App: React.FC = () => {
   return (
