@@ -2,25 +2,14 @@ import React, {Component} from 'react';
 import {Notification} from '../constants/actionTypes'; 
 
 interface MyProps {
+    notification: Notification
     setNotification(notification: Notification): void
     clearNotification(): void
 }
 
-interface MyState {
-    isClicked: boolean
-}
-
-class ActionButton extends Component<MyProps, MyState> {
-    constructor(props: MyProps) {
-        super(props)
-        this.state = {
-            isClicked: false
-        }
-    }
-
+class ActionButton extends Component<MyProps> {
     onClick() {
-        if (this.state.isClicked) {
-            console.log('clicked')
+        if (this.props.notification.text) {
             this.props.clearNotification();
         } else {
             const n: Notification = {
@@ -29,14 +18,11 @@ class ActionButton extends Component<MyProps, MyState> {
             }
             this.props.setNotification(n);
         }
-        this.setState({
-            isClicked: !this.state.isClicked
-        })
     }
     render() {
         return (
             <button className="btn btn-primary" onClick={this.onClick.bind(this)}>
-                {this.state.isClicked ? 'Clear' : 'Say "hello"'}
+                {this.props.notification.text ? 'Clear' : 'Say "hello"'}
             </button>
         )
     }
