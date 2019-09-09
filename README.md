@@ -4,3 +4,4 @@ A boilerplate for reactjs with the following:
 - redux
 - bootstrap
 - sass
+- typescript
